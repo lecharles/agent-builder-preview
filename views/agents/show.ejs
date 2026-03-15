@@ -38,7 +38,7 @@
         </ul>
     <% } %>
     <br>
-    
+    <a href="/preview/<%= agent._id %>">Preview Agent</a><br><br>
     <a href="/agents/<%= agent._id %>/edit">Edit Agent</a>
     <form action="/agents/<%= agent._id %>?_method=DELETE" method="POST">
         <button type="submit">Delete Agent</button>

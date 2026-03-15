@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preview: <%= agent.name %></title>
+</head>
+<body>
+    <h1>Preview: <%= agent.name %></h1>
+    <nav>
+        <a href="/">Home</a> | <a href="/agents/<%= agent._id %>">Back to Agent</a> | <a href="/agents">My Agents</a>
+    </nav>
+    <br>
+
+    <form action="/preview/<%= agent._id %>" method="POST">
+        <label for="question">Ask your agent a question:</label><br>
+        <textarea id="question" name="question" required><%= question %></textarea><br><br>
+        <button type="submit">Send</button>
+    </form>
+
+    <% if (response) { %>
+        <h3>Response</h3>
+        <p><%= response %></p>
+    <% } %>
+
+    <br>
+    <details>
+        <summary>Dev Mode: View System Prompt</summary>
+        <pre><%= systemPrompt %></pre>
+    </details>
+</body>
+</html>
