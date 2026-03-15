@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= skill.name %></title>
+</head>
+<body>
+    <h1><%= skill.name %></h1>
+    <nav>
+        <a href="/">Home</a> | <a href="/skills">My Skills</a>
+    </nav>
+    <br>
+    <p><%= skill.description %></p>
+    <% if (skill.image) { %>
+        <img src="<%= skill.image %>" alt="<%= skill.name %>">
+    <% } %>
+    <% if (skill.aiSummary) { %>
+        <h3>AI Summary</h3>
+        <p><%= skill.aiSummary %></p>
+    <% } %>
+    <br>
+    <a href="/skills/<%= skill._id %>/edit">Edit Skill</a>
+    <form action="/skills/<%= skill._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete Skill</button>
+    </form>
+</body>
+</html>
