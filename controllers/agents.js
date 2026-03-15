@@ -6,7 +6,8 @@ const Skill = require('../models/skill')
 // /agents
 router.get('/', async (req, res) => {
     try {
-        const agents = await Agent.find({ createdBy: req.session.user._id })
+        // show all agents from all users, logged-in users can browse and preview, only creators can edit/delete
+        const agents = await Agent.find().populate('createdBy')
         res.render('agents/index', { agents })
     } catch (error) {
         res.status(500).render('error', { error: error.message })
