@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New Agent</title>
+</head>
+<body>
+    <h1>Create a New Agent</h1>
+    <nav>
+        <a href="/">Home</a> | <a href="/agents">My Agents</a>
+    </nav>
+    <br>
+    <form action="/agents" method="POST">
+        <label for="name">Agent Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="description">Description:</label><br>
+        <textarea id="description" name="description"></textarea><br><br>
+
+        <label for="personalityPrompt">Personality Mode:</label><br>
+        <select id="personalityPrompt" name="personalityPrompt">
+            <% ['role-play', 'assistant', 'coaching', 'customer-care'].forEach(mode => { %>
+                <option value="<%= mode %>"><%= mode %></option>
+            <% }) %>
+        </select><br><br>
+
+        <label for="customPersonality">Custom Personality Notes:</label><br>
+        <textarea id="customPersonality" name="customPersonality"></textarea><br><br>
+
+        <fieldset>
+            <legend>Load Skills:</legend>
+            <% if (skills.length === 0) { %>
+                <p>No skills created yet. <a href="/skills/new">Create a skill first.</a></p>
+            <% } else { %>
+                <% skills.forEach(skill => { %>
+                    <label>
+                        <input type="checkbox" name="skills" value="<%= skill._id %>"><%= skill.name %>
+                    </label>
+                    <br>
+                <% }) %>
+            <% } %>
+        </fieldset><br>
+
+        <label for="status">Status:</label><br>
+        <select id="status" name="status">
+            <option value="off">Off</option>
+            <option value="on">On</option>
+        </select><br><br>
+
+        <button type="submit">Create Agent</button>
+    </form>
+</body>
+</html>
