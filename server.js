@@ -64,4 +64,8 @@ app.use('/agents', agentRoutes)
 const previewRoutes = require('./controllers/preview')
 app.use('/preview', previewRoutes)
 
+app.use((req, res) => {
+    res.status(404).render('error', { error: 'Page not found' })
+})
+
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
