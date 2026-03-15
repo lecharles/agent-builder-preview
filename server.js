@@ -51,7 +51,11 @@ app.get('/', (req, res) => {
 
 // Auth gate - everything below requires login
 app.use(authRequired)
+
 const userRoutes = require('./controllers/user')
 app.use('/users', userRoutes)
+
+const skillRoutes = require('./controllers/skills')
+app.use('/skills', skillRoutes)
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
