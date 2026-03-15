@@ -58,4 +58,7 @@ app.use('/users', userRoutes)
 const skillRoutes = require('./controllers/skills')
 app.use('/skills', skillRoutes)
 
+const agentRoutes = require('./controllers/agents')
+app.use('/agents', agentRoutes)
+
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))
