@@ -38,11 +38,20 @@ app.use(session({
 // Make user data available to all views
 app.use(passDataToView)
 
+// Auth routes - accessible to everyone
+const authRoutes = require('./controllers/auth')
+app.use('/auth', authRoutes)
+
 // Root route
 app.get('/', (req, res) => {
     res.render('index', {
         user: req.session.user
     })
 })
+
+// Auth gate - everything below requires login
+app.use(authRequired)
+const userRoutes = require('./controllers/user')
+app.use('/users', userRoutes)
 
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`))

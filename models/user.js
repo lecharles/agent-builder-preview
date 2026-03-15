@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        language: {
+        agentLanguage: {
             type: String,
             enum: ['english', 'french', 'spanish', 'italian', 'portuguese'],
             default: 'english',

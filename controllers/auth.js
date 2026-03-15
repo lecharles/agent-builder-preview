@@ -11,7 +11,7 @@ router.get('/sign-up', (req, res) => {
 // create new user account
 router.post('/sign-up', async (req, res) => {
     try {
-        const { username, password, confirmPassword, language } = req.body
+        const { username, password, confirmPassword, agentLanguage } = req.body
 
         const foundUser = await User.findOne({ username: username })
         if (foundUser) {
@@ -26,7 +26,7 @@ router.post('/sign-up', async (req, res) => {
         const user = await User.create({
             username,
             hashedPassword,
-            language,
+            agentLanguage,
         })
 
         req.session.user = {
