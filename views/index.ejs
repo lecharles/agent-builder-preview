@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Builder & Preview</title>
+</head>
+<body>
+    <h1>Agent Builder & Preview</h1>
+    <p>Build, configure, and test your AI agents.</p>
+    <% if(user) { %>
+        <p>Welcome back, <%= user.username %></p>
+    <% } else { %>
+        <a href="/auth/sign-up">Sign Up</a>
+        <a href="/auth/sign-in">Sign In</a>
+    <% } %>
+</body>
+</html>

@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000
 const morgan = require('morgan')
 const methodOverride = require('method-override')
 const session = require('express-session')
-const MongoStore = require('connect-mongo')
+const MongoStore = require('connect-mongo').default || require('connect-mongo')
 const path = require('path')
 
 // Middleware
