@@ -20,9 +20,9 @@
         <p><%= skill.aiSummary %></p>
     <% } %>
     <br>
-    <a href="/skills/<%= skill._id %>/edit">Edit Skill</a>
-    <form action="/skills/<%= skill._id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Skill</button>
-    </form>
+    <% if (user._id===skill.createdBy.toString()) { %>
+        <a href="/skills/<%= skill._id %>/edit">Edit Skill</a>
+        <form action="/skills/<%= skill._id %>?_method=DELETE" method="POST"><button type="submit">Delete Skill</button></form>
+    <% } %>
 </body>
 </html>

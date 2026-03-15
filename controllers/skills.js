@@ -42,6 +42,9 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
     try {
         const skill = await Skill.findById(req.params.id)
+        if (skill.createdBy.toString() !== req.session.user._id) {
+            return res.redirect('/skills')
+        }
         res.render('skills/edit', { skill })
     } catch (error) {
         res.status(500).render('error', { error: error.message })
@@ -51,6 +54,10 @@ router.get('/:id/edit', async (req, res) => {
 // Update skill in database
 router.put('/:id', async (req, res) => {
     try {
+        const skill = await Skill.findById(req.params.id)
+        if (skill.createdBy.toString() !== req.session.user._id) {
+            return res.redirect('/skills')
+        }
         await Skill.findByIdAndUpdate(req.params.id, req.body)
         res.redirect('/skills/' + req.params.id)
     } catch (error) {
@@ -61,6 +68,10 @@ router.put('/:id', async (req, res) => {
 // Delete skill from database
 router.delete('/:id', async (req, res) => {
     try {
+        const skill = await Skill.findById(req.params.id)
+        if (skill.createdBy.toString() !== req.session.user._id) {
+            return res.redirect('/skills')
+        }
         await Skill.findByIdAndDelete(req.params.id)
         res.redirect('/skills')
     } catch (error) {

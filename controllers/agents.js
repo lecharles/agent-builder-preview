@@ -49,6 +49,10 @@ router.get('/:id', async (req, res) => {
 router.get('/:id/edit', async (req, res) => {
     try {
         const agent = await Agent.findById(req.params.id)
+        // authorization: only the creator can edit this agent
+        if (agent.createdBy.toString() !== req.session.user._id) {
+            return res.redirect('/agents')
+        }
         const skills = await Skill.find({ createdBy: req.session.user._id })
         res.render('agents/edit', { agent, skills })
     } catch (error) {
@@ -59,6 +63,10 @@ router.get('/:id/edit', async (req, res) => {
 // Update agent in database
 router.put('/:id', async (req, res) => {
     try {
+        const agent = await Agent.findById(req.params.id)
+        if (agent.createdBy.toString() !== req.session.user._id) {
+            return res.redirect('/agents')
+        }
         if (!req.body.skills) req.body.skills = []
         await Agent.findByIdAndUpdate(req.params.id, req.body)
         res.redirect('/agents/' + req.params.id)
@@ -70,6 +78,10 @@ router.put('/:id', async (req, res) => {
 // Delete agent from database
 router.delete('/:id', async (req, res) => {
     try {
+        const agent = await Agent.findById(req.params.id)
+        if (agent.createdBy.toString() !== req.session.user._id) {
+            return res.redirect('/agents')
+        }
         await Agent.findByIdAndDelete(req.params.id)
         res.redirect('/agents')
     } catch (error) {
