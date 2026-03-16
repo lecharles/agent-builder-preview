@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-</head>
+<%- include('./partials/_header', { title: 'My Profile' }) %>
 <body>
-    <h1>Welcome, <%= user.username %></h1>
-    <p>Agent Language: <%= user.agentLanguage %></p>
-    <nav>
-        <a href="/skills">My Skills</a>
-        <a href="/agents">My Agents</a>
-        <a href="/auth/sign-out">Sign Out</a>
-    </nav>
+    <%- include('./partials/_navbar') %>
+    <main>
+        <h1>Welcome, <%= user.username %></h1>
+        <p>Agent Language: <%= user.agentLanguage %></p>
+    </main>
 </body>
 </html>

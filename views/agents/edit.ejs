@@ -1,56 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit <%= agent.name %></title>
-</head>
+<%- include('../partials/_header', { title: 'Edit ' + agent.name }) %>
 <body>
-    <h1>Edit Agent</h1>
-    <nav>
-        <a href="/">Home</a> | <a href="/agents">My Agents</a> | <a href="/agents/<%= agent._id %>">Back to Agent</a>
-    </nav>
-    <br>
-    <form action="/agents/<%= agent._id %>?_method=PUT" method="POST">
-        <label for="name">Agent Name:</label><br>
-        <input type="text" id="name" name="name" required value="<%= agent.name %>"><br><br>
+    <%- include('../partials/_navbar') %>
+    <main>
+        <h1>Edit Agent</h1>
+        <form action="/agents/<%= agent._id %>?_method=PUT" method="POST">
+            <label for="name">Agent Name:</label>
+            <input type="text" id="name" name="name" required value="<%= agent.name %>">
 
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description"><%= agent.description ? agent.description : '' %></textarea><br><br>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"><%= agent.description ? agent.description : '' %></textarea>
 
-        <label for="personalityPrompt">Personality Mode:</label><br>
-        <select id="personalityPrompt" name="personalityPrompt">
-            <% ['role-play', 'assistant', 'coaching', 'customer-care'].forEach(mode => { %>
-                <option value="<%= mode %>" <%= agent.personalityPrompt === mode ? 'selected' : '' %>><%= mode %></option>
-            <% }) %>
-        </select><br><br>
-
-        <label for="customPersonality">Custom Personality Notes:</label><br>
-        <textarea id="customPersonality" name="customPersonality"><%= agent.customPersonality ? agent.customPersonality : '' %></textarea><br><br>
-
-        <fieldset>
-            <legend>Load Skills:</legend>
-            <% if (skills.length === 0) { %>
-                <p>No skills created yet. <a href="/skills/new">Create a skill first.</a></p>
-            <% } else { %>
-                <%# loop through all skills created by this user - to check each against this agent's loaded skills %>
-                <% skills.forEach(skill => { %>
-                    <label>
-                        <input type="checkbox" name="skills" value="<%= skill._id %>"
-                            <%# check if this skill is already loaded on the agent - compare as strings because ObjectIds are objects %>
-                            <%= agent.skills.some(s => s.toString() === skill._id.toString()) ? 'checked' : '' %>><%= skill.name %>
-                    </label><br>
+            <label for="personalityPrompt">Personality Mode:</label>
+            <select id="personalityPrompt" name="personalityPrompt">
+                <% ['role-play', 'assistant', 'coaching', 'customer-care'].forEach(mode => { %>
+                    <option value="<%= mode %>" <%= agent.personalityPrompt === mode ? 'selected' : '' %>><%= mode %></option>
                 <% }) %>
-            <% } %>
-        </fieldset><br>
+            </select>
 
-        <label for="status">Status:</label><br>
-        <select id="status" name="status">
-            <option value="off" <%= agent.status === 'off' ? 'selected' : '' %>>Off</option>
-            <option value="on" <%= agent.status === 'on' ? 'selected' : '' %>>On</option>
-        </select><br><br>
+            <label for="customPersonality">Custom Personality Notes:</label>
+            <textarea id="customPersonality" name="customPersonality"><%= agent.customPersonality ? agent.customPersonality : '' %></textarea>
 
-        <button type="submit">Update Agent</button>
-    </form>
+            <fieldset>
+                <legend>Load Skills:</legend>
+                <% if (skills.length === 0) { %>
+                    <p>No skills created yet. <a href="/skills/new">Create a skill first.</a></p>
+                <% } else { %>
+                    <%# loop through all skills created by this user - to check each against this agent's loaded skills %>
+                    <% skills.forEach(skill => { %>
+                        <label>
+                            <input type="checkbox" name="skills" value="<%= skill._id %>"
+                                <%# check if this skill is already loaded on the agent - compare as strings because ObjectIds are objects %>
+                                <%= agent.skills.some(s => s.toString() === skill._id.toString()) ? 'checked' : '' %>><%= skill.name %>
+                        </label>
+                    <% }) %>
+                <% } %>
+            </fieldset>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="off" <%= agent.status === 'off' ? 'selected' : '' %>>Off</option>
+                <option value="on" <%= agent.status === 'on' ? 'selected' : '' %>>On</option>
+            </select>
+
+            <button type="submit">Update Agent</button>
+        </form>
+    </main>
 </body>
 </html>

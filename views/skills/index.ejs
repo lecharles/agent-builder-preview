@@ -1,24 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Skills</title>
-</head>
+<%- include('../partials/_header', { title: 'My Skills' }) %>
 <body>
-    <h1>My Skills</h1>
-    <nav>
-        <a href="/">Home</a> | <a href="/skills/new">Add a New Skill</a>
-    </nav>
-    <br>
-    <% if (skills.length===0) { %>
-        <p>You don't have any skills yet. Add one to get started.</p>
-    <% } else { %>
-        <ul>
-            <% skills.forEach(skill=> { %>
-                <li><a href="/skills/<%= skill._id %>"><%= skill.name %></a></li>
-            <% }) %>
-        </ul>
-    <% } %>
+    <%- include('../partials/_navbar') %>
+    <main>
+        <h1>My Skills</h1>
+        <a href="/skills/new" class="btn">Add a New Skill</a>
+        <% if (skills.length===0) { %>
+            <p>You don't have any skills yet. Add one to get started.</p>
+        <% } else { %>
+            <ul>
+                <% skills.forEach(skill=> { %>
+                    <li><a href="/skills/<%= skill._id %>"><%= skill.name %></a></li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </main>
 </body>
 </html>

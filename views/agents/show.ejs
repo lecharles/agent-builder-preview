@@ -1,49 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= agent.name %></title>
-</head>
+<%- include('../partials/_header', { title: agent.name }) %>
 <body>
-    <h1><%= agent.name %></h1>
-    <nav>
-        <a href="/">Home</a> | <a href="/agents">My Agents</a>
-    </nav>
-    <br>
-    <% if (agent.description) { %>
-        <p><%= agent.description %></p>
-    <% } %>
-    
-    <p><strong>Personality:</strong> <%= agent.personalityPrompt %></p>
-    <p><strong>Status:</strong> <%= agent.status %></p>
-    
-    <% if (agent.customPersonality) { %>
-        <p><strong>Custom Personality:</strong> <%= agent.customPersonality %></p>
-    <% } %>
-    
-    <% if (agent.job) { %>
-        <h3>Inferred Job</h3>
-        <p><%= agent.job %></p>
-    <% } %>
-    
-    <h3>Loaded Skills</h3>
-    <% if (agent.skills.length === 0) { %>
-        <p>No skills loaded.</p>
-    <% } else { %>
-        <ul>
-            <% agent.skills.forEach(skill => { %>
-                <li><%= skill.name %></li>
-            <% }) %>
-        </ul>
-    <% } %>
-    <br>
-    <%# "preview or test agent" available to any logged-in user%>
-    <a href="/preview/<%= agent._id %>">Preview Agent</a><br><br>
-    <%# edit and delete restricted to the creator of this agent %>
-    <% if (user._id===agent.createdBy.toString()) { %>
-        <a href="/agents/<%= agent._id %>/edit">Edit Agent</a>
-        <form action="/agents/<%= agent._id %>?_method=DELETE" method="POST"><button type="submit">Delete Agent</button></form>
-    <% } %>
+    <%- include('../partials/_navbar') %>
+    <main>
+        <h1><%= agent.name %></h1>
+        <% if (agent.description) { %>
+            <p><%= agent.description %></p>
+        <% } %>
+        
+        <p><strong>Personality:</strong> <%= agent.personalityPrompt %></p>
+        <p><strong>Status:</strong> <%= agent.status %></p>
+        
+        <% if (agent.customPersonality) { %>
+            <p><strong>Custom Personality:</strong> <%= agent.customPersonality %></p>
+        <% } %>
+        
+        <% if (agent.job) { %>
+            <h3>Inferred Job</h3>
+            <p><%= agent.job %></p>
+        <% } %>
+        
+        <h3>Loaded Skills</h3>
+        <% if (agent.skills.length === 0) { %>
+            <p>No skills loaded.</p>
+        <% } else { %>
+            <ul>
+                <% agent.skills.forEach(skill => { %>
+                    <li><%= skill.name %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+        
+        <%# "preview or test agent" available to any logged-in user%>
+        <a href="/preview/<%= agent._id %>" class="btn">Preview Agent</a>
+        <%# edit and delete restricted to the creator of this agent %>
+        <% if (user._id===agent.createdBy.toString()) { %>
+            <div class="actions">
+                <a href="/agents/<%= agent._id %>/edit" class="btn">Edit Agent</a>
+                <form action="/agents/<%= agent._id %>?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-danger">Delete Agent</button>
+                </form>
+            </div>
+        <% } %>
+    </main>
 </body>
 </html>

@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Agents</title>
-</head>
-
+<%- include('../partials/_header', { title: 'All Agents' }) %>
 <body>
-    <h1>All Agents</h1>
-    <nav>
-        <a href="/">Home</a> | <a href="/agents/new">Create a New Agent</a>
-    </nav>
-    <br>
-    <% if (agents.length===0) { %>
-        <p>There are no agents available. Create one to get started.</p>
-    <% } else { %>
-        <ul>
-            <% agents.forEach(agent=> { %>
-                <li><a href="/agents/<%= agent._id %>"><%= agent.name %></a> — <%= agent.status %> — by <%= agent.createdBy.username %></li>
-            <% }) %>
-        </ul>
-    <% } %>
+    <%- include('../partials/_navbar') %>
+    <main>
+        <h1>All Agents</h1>
+        <a href="/agents/new" class="btn">Create a New Agent</a>
+        <% if (agents.length===0) { %>
+            <p>There are no agents available. Create one to get started.</p>
+        <% } else { %>
+            <ul>
+                <% agents.forEach(agent=> { %>
+                    <li><a href="/agents/<%= agent._id %>"><%= agent.name %></a> — <%= agent.status %> — by <%= agent.createdBy.username %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </main>
 </body>
 
 </html>

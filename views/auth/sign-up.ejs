@@ -1,36 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-</head>
+<%- include('../partials/_header', { title: 'Sign Up' }) %>
 <body>
-    <h1>Create a new account</h1>
-    <% if(message) { %>
-        <p style="color:red;"><%= message %></p>
-    <% } %>
-    <form action="/auth/sign-up" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required />
-    
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required />
-    
-        <label for="confirmPassword">Confirm Password:</label>
-        <input type="password" name="confirmPassword" id="confirmPassword" required />
-    
-        <label for="agentLanguage">Agent Language:</label>
-        <select name="agentLanguage" id="agentLanguage">
-            <option value="english">English</option>
-            <option value="french">French</option>
-            <option value="spanish">Spanish</option>
-            <option value="italian">Italian</option>
-            <option value="portuguese">Portuguese</option>
-        </select>
-    
-        <button type="submit">Sign Up</button>
-    </form>
-    <p>Already have an account? <a href="/auth/sign-in">Sign In</a></p>
+    <%- include('../partials/_navbar') %>
+    <main>
+        <h1>Create a new account</h1>
+        <% if(message) { %>
+            <p class="error-message"><%= message %></p>
+        <% } %>
+        <form action="/auth/sign-up" method="POST">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required />
+        
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required />
+        
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required />
+        
+            <label for="agentLanguage">Agent Language:</label>
+            <select name="agentLanguage" id="agentLanguage">
+                <option value="english">English</option>
+                <option value="french">French</option>
+                <option value="spanish">Spanish</option>
+                <option value="italian">Italian</option>
+                <option value="portuguese">Portuguese</option>
+            </select>
+        
+            <button type="submit">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="/auth/sign-in">Sign In</a></p>
+    </main>
 </body>
 </html>

@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit <%= skill.name %></title>
-</head>
+<%- include('../partials/_header', { title: 'Edit ' + skill.name }) %>
 <body>
-    <h1>Edit Skill</h1>
-    <nav>
-        <a href="/">Home</a> | <a href="/skills">My Skills</a> | <a href="/skills/<%= skill._id %>">Back to Skill</a>
-    </nav>
-    <br>
-    <form action="/skills/<%= skill._id %>?_method=PUT" method="POST">
-        <label for="name">Skill Name:</label><br>
-        <input type="text" id="name" name="name" required value="<%= skill.name %>"><br><br>
-    
-        <label for="description">Description:</label><br>
-        <textarea id="description" name="description" required><%= skill.description %></textarea><br><br>
-    
-        <label for="image">Image URL:</label><br>
-        <input type="text" id="image" name="image" value="<%= skill.image ? skill.image : '' %>"><br><br>
-    
-        <button type="submit">Update Skill</button>
-    </form>
+    <%- include('../partials/_navbar') %>
+    <main>
+        <h1>Edit Skill</h1>
+        <form action="/skills/<%= skill._id %>?_method=PUT" method="POST">
+            <label for="name">Skill Name:</label>
+            <input type="text" id="name" name="name" required value="<%= skill.name %>">
+        
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required><%= skill.description %></textarea>
+        
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" name="image" value="<%= skill.image ? skill.image : '' %>">
+        
+            <button type="submit">Update Skill</button>
+        </form>
+    </main>
 </body>
 </html>
