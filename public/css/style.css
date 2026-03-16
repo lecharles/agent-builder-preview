@@ -1,0 +1,493 @@
+/* ============================================================
+   Agent Builder & Preview — Dark Mode Theme
+   ============================================================
+   Color Palette (6 colors, WCAG 2.0 AA compliant):
+   
+   Backgrounds:
+     --bg-primary:   #1e1e1e  (page background)
+     --bg-surface:   #2d2d2d  (cards, nav, form containers)
+     --bg-elevated:  #3a3a3a  (inputs, hover states)
+   
+   Text:
+     --text-primary: #e0e0e0  (headings, body text — 11.3:1 on bg-primary)
+     --text-muted:   #888888  (labels, secondary text — 5.0:1 on bg-primary)
+   
+   Accent:
+     --accent:       #4fc3f7  (links, primary buttons — 8.6:1 on bg-primary)
+     --danger:       #e57373  (delete buttons, errors — 5.5:1 on bg-primary)
+   
+   WCAG 2.0 AA compliant for normal text (4.5:1) and large text (3:1) against the primary background color.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    --bg-primary: #1e1e1e;
+    --bg-surface: #2d2d2d;
+    --bg-elevated: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-muted: #888888;
+    --accent: #4fc3f7;
+    --danger: #e57373;
+    --border: #444444;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   Navigation
+   ============================================================ */
+
+nav {
+    background-color: var(--bg-surface);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+nav a:hover {
+    color: var(--text-primary);
+}
+
+nav a:first-child {
+    margin-right: auto;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.9375rem;
+}
+
+/* ============================================================
+   Main Content Layout (flexbox)
+   ============================================================ */
+
+main {
+    flex: 1;
+    max-width: 720px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+/* ============================================================
+   Typography
+   ============================================================ */
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+p {
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+strong {
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   Links
+   ============================================================ */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--text-primary);
+}
+
+/* ============================================================
+   Buttons (.btn, .btn-danger)
+   ============================================================ */
+
+.btn {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.85;
+    color: var(--bg-primary);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    color: var(--bg-primary);
+}
+
+.btn-danger:hover {
+    opacity: 0.85;
+}
+
+/* ============================================================
+   Forms
+   ============================================================ */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+label {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+    background-color: var(--bg-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    width: 100%;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+select {
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: opacity 0.2s;
+    align-self: flex-start;
+}
+
+button[type="submit"]:hover {
+    opacity: 0.85;
+}
+
+/* ============================================================
+   Fieldset (skill checkboxes)
+   ============================================================ */
+
+fieldset {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 12px;
+}
+
+legend {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    padding: 0 8px;
+}
+
+fieldset label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================================================
+   Actions (edit/delete button groups)
+   ============================================================ */
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.actions form {
+    margin-top: 0;
+}
+
+.actions .btn-danger {
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: opacity 0.2s;
+}
+
+/* ============================================================
+   Lists (skills index, agents index)
+   ============================================================ */
+
+ul {
+    list-style: none;
+    margin-top: 16px;
+}
+
+li {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+}
+
+li a {
+    font-weight: 500;
+}
+
+/* ============================================================
+   Response Area (preview page)
+   ============================================================ */
+
+.response-area {
+    background-color: var(--bg-surface);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 16px;
+    margin-top: 20px;
+}
+
+.response-area h3 {
+    color: var(--accent);
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.response-area p {
+    line-height: 1.7;
+}
+
+/* ============================================================
+   Dev Mode Toggle (details/summary)
+   ============================================================ */
+
+details {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+summary {
+    background-color: var(--bg-surface);
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+summary:hover {
+    color: var(--text-primary);
+}
+
+details pre {
+    background-color: var(--bg-elevated);
+    padding: 16px;
+    font-size: 0.8125rem;
+    font-family: 'Courier New', monospace;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   Error Message (auth forms)
+   ============================================================ */
+
+.error-message {
+    color: var(--danger);
+    font-size: 0.875rem;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+/* ============================================================
+   Images
+   ============================================================ */
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 12px 0;
+}
+
+/* ============================================================
+   UI Polish — homepage, profile, table, status indicators
+   ============================================================
+   Second pass: quick wins added after testing the base theme
+   with real data. Improves scannability and visual hierarchy.
+   ============================================================ */
+/* Homepage 
+*/
+
+.homepage {
+    text-align: center;
+    padding-top: 80px;
+}
+
+.welcome-text {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.homepage-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+/* ============================================================
+   Profile Links
+   ============================================================ */
+
+.profile-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+/* ============================================================
+   Table (agents index)
+   ============================================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+th {
+    text-align: left;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+td {
+    padding: 12px;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border);
+}
+
+td a {
+    font-weight: 500;
+}
+
+.status-on {
+    color: #66bb6a;
+    font-weight: 500;
+}
+
+.status-off {
+    color: var(--danger);
+    font-weight: 500;
+}
+
+/* ============================================================
+   Form Submit Full Width
+   ============================================================ */
+
+button[type="submit"] {
+    width: 100%;
+    text-align: center;
+}

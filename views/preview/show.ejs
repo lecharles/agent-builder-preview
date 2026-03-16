@@ -22,5 +22,13 @@
             <pre><%= systemPrompt %></pre>
         </details>
     </main>
+<%# Client-side loading state: changes Send button to "Thinking..." on form submit, resets on page reload with response %>
+<script>
+    document.querySelector('form').addEventListener('submit', function () {
+        var btn = document.querySelector('button[type="submit"]')
+        btn.textContent = 'Thinking...'
+        btn.style.opacity = '0.6'
+    })
+</script>
 </body>
 </html>

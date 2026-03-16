@@ -7,11 +7,28 @@
         <% if (agents.length===0) { %>
             <p>There are no agents available. Create one to get started.</p>
         <% } else { %>
-            <ul>
-                <% agents.forEach(agent=> { %>
-                    <li><a href="/agents/<%= agent._id %>"><%= agent.name %></a> — <%= agent.status %> — by <%= agent.createdBy.username %></li>
-                <% }) %>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Language</th>
+                        <th>Creator</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% agents.forEach(agent => { %>
+                        <tr>
+                            <td><a href="/agents/<%= agent._id %>"><%= agent.name %></a></td>
+                            <td><%= agent.personalityPrompt %></td>
+                            <td><span class="status-<%= agent.status %>"><%= agent.status %></span></td>
+                            <td><%= agent.createdBy.agentLanguage %></td>
+                            <td><%= agent.createdBy.username %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
         <% } %>
     </main>
 </body>

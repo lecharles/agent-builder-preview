@@ -3,7 +3,32 @@
     <%- include('./partials/_navbar') %>
     <main>
         <h1>Welcome, <%= user.username %></h1>
-        <p>Agent Language: <%= user.agentLanguage %></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Username</td>
+                    <td><%= user.username %></td>
+                </tr>
+                <tr>
+                    <td>Agent Language</td>
+                    <td><%= user.agentLanguage %></td>
+                </tr>
+                <tr>
+                    <td>Member Since</td>
+                    <td><%= new Date(user.createdAt).toLocaleDateString() %></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="profile-links">
+            <a href="/skills" class="btn">My Skills</a>
+            <a href="/agents" class="btn">All Agents</a>
+        </div>
     </main>
 </body>
 </html>

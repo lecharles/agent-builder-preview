@@ -7,11 +7,26 @@
         <% if (skills.length===0) { %>
             <p>You don't have any skills yet. Add one to get started.</p>
         <% } else { %>
-            <ul>
-                <% skills.forEach(skill=> { %>
-                    <li><a href="/skills/<%= skill._id %>"><%= skill.name %></a></li>
-                <% }) %>
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% skills.forEach(skill=> { %>
+                        <tr>
+                            <td><a href="/skills/<%= skill._id %>">
+                                    <%= skill.name %>
+                                </a></td>
+                            <td>
+                                <%= skill.description %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
         <% } %>
     </main>
 </body>

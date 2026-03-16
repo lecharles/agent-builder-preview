@@ -1,14 +1,16 @@
 <%- include('./partials/_header', { title: 'Agent Builder & Preview' }) %>
 <body>
     <%- include('./partials/_navbar') %>
-    <main>
+    <main class ="homepage">
         <h1>Agent Builder & Preview</h1>
         <p>Build, configure, and test your AI agents.</p>
         <% if(user) { %>
-            <p>Welcome back, <%= user.username %></p>
+            <p class="welcome-text">Welcome back, <%= user.username %></p>
         <% } else { %>
-            <a href="/auth/sign-up">Sign Up</a>
-            <a href="/auth/sign-in">Sign In</a>
+            <div class="homepage-actions">
+                <a href="/auth/sign-up" class="btn">Sign Up</a>
+                <a href="/auth/sign-in" class="btn btn-outline">Sign In</a>
+            </div>
         <% } %>
     </main>
 </body>
