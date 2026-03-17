@@ -522,3 +522,19 @@ button[type="submit"] {
     border: none;
     transition: opacity 0.2s;
 }
+
+/* Force delete buttons to match edit link buttons exactly */
+.actions button {
+    background-color: var(--danger);
+    color: var(--bg-primary);
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    border: none;
+    width: auto;
+    vertical-align: middle;
+}
