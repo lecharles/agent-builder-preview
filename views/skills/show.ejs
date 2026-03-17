@@ -14,7 +14,7 @@
         <% if (user._id===skill.createdBy.toString()) { %>
             <div class="actions">
                 <a href="/skills/<%= skill._id %>/edit" class="btn">Edit Skill</a>
-                <form action="/skills/<%= skill._id %>?_method=DELETE" method="POST" style="display:inline; margin:0; padding:0;"> <!-- style attr to align with edit btt -->
+                <form action="/skills/<%= skill._id %>?_method=DELETE" method="POST" style="display:inline; height:38px;"> <!-- style attr to align with edit btt -->
                     <button type="submit" class="btn btn-danger">Delete Skill</button>
                 </form>
             </div>

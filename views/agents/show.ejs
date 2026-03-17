@@ -36,7 +36,7 @@
         <% if (user._id===agent.createdBy.toString()) { %>
             <div class="actions">
                 <a href="/agents/<%= agent._id %>/edit" class="btn">Edit Agent</a>
-                <form action="/agents/<%= agent._id %>?_method=DELETE" method="POST" style="display:inline; margin:0; padding:0;"> <!-- same fix as show skills -->
+                <form action="/agents/<%= agent._id %>?_method=DELETE" method="POST" style="display:inline; height:38px;"> <!-- same fix as show skills -->
                     <button type="submit" class="btn btn-danger">Delete Agent</button>
                 </form>
             </div>
