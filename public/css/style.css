@@ -282,17 +282,41 @@ input[type="checkbox"] {
 }
 
 .actions form {
-    margin-top: 0;
+    margin: 0;
+    padding: 0;
 }
 
-.actions .btn-danger {
+.actions a,
+.actions button {
+    display: inline-block;
     padding: 8px 20px;
     border-radius: 6px;
     font-size: 0.875rem;
     font-weight: 500;
-    cursor: pointer;
     font-family: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
     transition: opacity 0.2s;
+    line-height: 1.4;
+    vertical-align: middle;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.actions a {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+}
+
+.actions button {
+    background-color: var(--danger);
+    color: var(--bg-primary);
+}
+
+.actions a:hover,
+.actions button:hover {
+    opacity: 0.85;
 }
 
 /* ============================================================
@@ -499,42 +523,4 @@ button[type="submit"] {
 
 .welcome-text {
     font-size: 1.25rem;
-}
-
-/* Fix delete button alignment in actions row */
-.actions form {
-    margin: 0;
-    padding: 0;
-    display: inline;
-}
-
-/* Ensure delete buttons match edit button size */
-.actions .btn-danger {
-    background-color: var(--danger);
-    color: var(--bg-primary);
-    display: inline-block;
-    padding: 8px 20px;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    border: none;
-    transition: opacity 0.2s;
-}
-
-/* Force delete buttons to match edit link buttons exactly */
-.actions button {
-    background-color: var(--danger);
-    color: var(--bg-primary);
-    display: inline-block;
-    padding: 8px 20px;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    cursor: pointer;
-    font-family: inherit;
-    border: none;
-    width: auto;
-    vertical-align: middle;
 }
