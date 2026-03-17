@@ -539,3 +539,13 @@ button[type="submit"] {
 .actions button[type="submit"] {
     width: auto;
 }
+
+/* Nuclear fix: force delete form inline inside actions */
+.actions form {
+    display: inline !important;
+    flex-direction: unset !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    margin-top: 0 !important;
+}
