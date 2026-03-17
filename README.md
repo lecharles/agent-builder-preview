@@ -6,7 +6,7 @@ An AI Agent Builder and Preview application built with the MEN stack (MongoDB, E
 
 ## Motivation
 
-The internet of agents: this app explores how AI agents are configured and tested. It is intented as a developer-oriented tool where users define skills as reusable building blocks, compose agents from those skills, and preview agent behavior in real time with full visibility into the system prompt assembly.
+The internet of agents: this app explores how AI agents are configured and tested. It is intended as a developer-oriented tool where users define skills as reusable building blocks, compose agents from those skills, and preview agent behavior in real time with full visibility into the system prompt assembly.
 
 ## Features
 
@@ -22,7 +22,7 @@ The internet of agents: this app explores how AI agents are configured and teste
 ## Getting Started
 
 - **Deployed app**: [https://agent-builder-preview.onrender.com](https://agent-builder-preview.onrender.com)
-- **Planning materials**: [planning/](planning/) folder in this repo (ERD, wireframes, user stories)
+- **Planning materials**: [planning/](planning/) folder in this repo (ERD, wireframes, user stories, routes)
 
 ### Demo accounts
 
@@ -43,6 +43,7 @@ The internet of agents: this app explores how AI agents are configured and teste
 - **CSS**: Custom dark theme with CSS variables, Flexbox layout
 - **Font**: Inter (Google Fonts)
 - **Logging**: Morgan
+- **Deployment**: Render (free tier)
 
 ## Attributions
 
@@ -60,20 +61,24 @@ The internet of agents: this app explores how AI agents are configured and teste
 1. **Bare-bones wireframes first** — focused on data model and CRUD flow before any styling
 2. **Dark mode as intentional choice** — this is a developer/admin tool; dark themes match the tools developers use daily
 3. **Six-color palette** — three grays for depth, white text, one accent blue, one danger red. Constraint breeds consistency
-4. **WCAG 2.0 AA compliance** — every text/background pairing exceeds 4.5:1 contrast ratio minimum
+4. **WCAG 2.0 AA compliance** — every text/background pairing exceeds 4.5:1 contrast ratio minimum, verified at WebAIM
 5. **Flexbox layout** — body column, nav row, centered content, action button groups, form stacking
-6. **Referenced documents over embedded** — Skills and Agents are separate collections with `createdBy` foreign keys, not embedded in User. This supports the many-to-many relationship between Agents and Skills
-7. **Feature-by-feature build order** — built end-to-end per feature (model → controller → views → test), not layer-by-layer
+6. **Color carries meaning** — blue for constructive actions (Add, Edit, Preview), red for destructive actions (Delete), green/red for status indicators
+7. **Referenced documents over embedded** — Skills and Agents are separate collections with `createdBy` foreign keys, not embedded in User. This supports the many-to-many relationship between Agents and Skills
+8. **Feature-by-feature build order** — built end-to-end per feature (model → controller → views → test), not layer-by-layer
 
 ## Next Steps / Roadmap
 
-1. **Light mode toggle** — CSS variables are already set up for easy theme switching
-2. **PersonalityPrompt as separate model** — replace hardcoded enum with seed data and ObjectId reference
-3. **AI-generated skill summaries** — call Anthropic API on skill creation to generate polished `aiSummary`
-4. **AI-generated agent job descriptions** — infer agent's job from loaded skills on create/update
-5. **Multi-turn chat** — persist conversation history for back-and-forth preview sessions
-6. **External API / web search** — integrate Brave Search API for grounded responses
-7. **Custom personality transformation** — AI-enhance raw user personality notes at preview time
-8. **Memory / chat history persistence** — save and resume preview conversations
-9. **Channel integration** — proactive agents with cron jobs and scheduled outreach
-10. **Testing status** — pre-prod vs prod environments for agents
+1. **Multi-turn chat** — persist conversation history for back-and-forth preview sessions
+2. **AI-generated skill summaries** — call Anthropic API on skill creation to generate polished `aiSummary`
+3. **AI-generated agent job descriptions** — infer agent's job from loaded skills on create/update
+4. **Light mode toggle** — CSS variables are already set up for easy theme switching
+5. **External API / web search** — integrate Brave Search API for grounded responses
+6. **Custom personality transformation** — AI-enhance raw user personality notes at preview time
+7. **JavaScript-based delete actions** — replace form-based method-override with JS to eliminate form/button alignment issues
+8. **User profile enhancements** — IP/location display, local time, server time, session duration timer, session history
+9. **Skills index thumbnails** — image and YouTube video thumbnails on skills table
+10. **Agents table enrichment** — skills count column, skill names, custom personality preview
+11. **Memory / chat history persistence** — save and resume preview conversations
+12. **Channel integration** — proactive agents with cron jobs and scheduled outreach
+13. **Testing status** — pre-prod vs prod environments for agents
