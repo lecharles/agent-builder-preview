@@ -491,3 +491,19 @@ button[type="submit"] {
     width: 100%;
     text-align: center;
 }
+
+/* Username emphasis on homepage and profile */
+.homepage h1 {
+    font-size: 2rem;
+}
+
+.welcome-text {
+    font-size: 1.25rem;
+}
+
+/* Fix delete button alignment in actions row */
+.actions form {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
