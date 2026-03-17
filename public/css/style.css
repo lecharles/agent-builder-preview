@@ -524,3 +524,18 @@ button[type="submit"] {
 .welcome-text {
     font-size: 1.25rem;
 }
+
+/* Fix: override full-width submit button inside actions row */
+.actions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.actions form {
+    display: flex;
+}
+
+.actions button[type="submit"] {
+    width: auto;
+}
