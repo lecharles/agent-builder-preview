@@ -21,7 +21,8 @@ The internet of agents: this app explores how AI agents are configured and teste
 
 ## Getting Started
 
-- **Deployed app**: [https://agent-builder-preview.onrender.com](https://agent-builder-preview.onrender.com)
+- **Deployed app (Heroku)**: [https://agent-builder-preview-bc4df088db73.herokuapp.com](https://agent-builder-preview-bc4df088db73.herokuapp.com)
+- **Deployed app (Render)**: [https://agent-builder-preview.onrender.com](https://agent-builder-preview.onrender.com)
 - **Planning materials**: [planning/](planning/) folder in this repo (ERD, wireframes, user stories, routes)
 
 ### Demo accounts
